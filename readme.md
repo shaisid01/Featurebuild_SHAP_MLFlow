@@ -182,4 +182,17 @@ python src/preproc/predict.py --test_path data/test.csv
 # Start API for real-time predictions
 uvicorn src/api/app:app --reload --host 0.0.0.0 --port 8000
 ```
+# 📊 Dataset
+Santander Customer Transaction Prediction
+https://www.kaggle.com/c/santander-customer-transaction-prediction
+
+# 📌 Technologies Used
+- Python
+- LightGBM
+- CatBoost
+- SHAP
+- MLflow
+- FastAPI
+- Pandas / NumPy
+
 
