@@ -1,4 +1,4 @@
-# 🚀 Project Overview
+## 🚀 Project Overview
 
 This repository implements a production-ready MLOps pipeline for predicting financial transactions using Santander dataset.
 It demonstrates full ML lifecycle practices, including:
@@ -9,7 +9,7 @@ It demonstrates full ML lifecycle practices, including:
   * Experiment tracking and model registry with MLflow
   * Batch and real-time prediction pipelines via FastAPI
   * The system is designed to be reproducible, auditable, and deployable.
-# 📂 Project Structure
+## 📂 Project Structure
 
 ```
 project\_root/
