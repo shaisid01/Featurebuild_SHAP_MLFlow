@@ -1,0 +1,18 @@
+# Ignore data files
+data/*.csv
+data/processed/*.csv
+mlops_project/*.csv
+
+# Ignore artifacts, models, feature store
+artifacts/
+models/
+feature_store/
+
+# Python cache and bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# OS files
+.DS_Store
+Thumbs.db
