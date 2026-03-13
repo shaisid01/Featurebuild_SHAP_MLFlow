@@ -180,6 +180,7 @@ mlflow.catboost.log_model(final_cat, artifact_path="cat_final_model", registered
 python src/preproc/predict.py --test_path data/test.csv
 ```
 ##⚡ Real-Time API
+
 FastAPI REST API serving ensemble predictions
 Start API
 ```
