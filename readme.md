@@ -54,7 +54,7 @@ project\_root/
 ```
 ## 🧠 System Architecture
 
-[System Architecture_.pdf](https://github.com/user-attachments/files/25975824/System.Architecture_.pdf)
+<img width="482" height="1027" alt="system_ architecture" src="https://github.com/user-attachments/assets/8914bd03-547e-41da-b70b-adb2681872f0" />
 
 * Features → interactions → CV → final models → predictions
 * All artifacts and metrics logged to MLflow
