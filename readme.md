@@ -106,15 +106,15 @@ Data Validation ──> Feature Engineering
 1. Clone the repository:
 
 ```
-git clone <repo\_url>
-cd project\_root
+git clone <repo_url>
+cd project_root
 ```
 2. Create and activate a Python environment:
 
 ```
 python -m venv venv
 source venv/bin/activate        # Linux/Mac
-venv\\Scripts\\activate           # Windows
+venv\Scripts\activate           # Windows
 
 ```
 3. Install dependencies:
@@ -185,14 +185,14 @@ Start API
 uvicorn src/api/app:app --reload --host 0.0.0.0 --port 8000
 ```
 Endpoints
-GET / – Health check
+GET  /– Health check
 POST /predict – Predict ensemble probability
 Request Example:
 ```
 {
 "features": {
-  "var\_0": 0.12,
-   "var\_1": -1.34,
+  "var_0": 0.12,
+   "var_1": -1.34,
     ...
  }
 }
@@ -203,12 +203,12 @@ Response Example:
 
 "prediction": 0.8234,
 "timestamp": "2026-03-12T14:35:12.123456",
-"model\_version": "final"
+"model_version": "final"
 }
 ```
 Logs inputs and predictions to MLflow for monitoring and audit.
 ## 🔄 Reproducibility
-* utils.seed.set\_seed(seed) ensures deterministic results
+* utils.seed.set_seed(seed) ensures deterministic results
 * FeatureBuilder + FeatureStore guarantees consistent features
 * MLflow logs provide full traceability of experiments and predictions
 ##⚡ Quick Start
@@ -216,9 +216,9 @@ Logs inputs and predictions to MLflow for monitoring and audit.
 # Train models
 python src/train.py --config configs/config.yaml
 # Validate data
-python src/preproc/data\_validation.py --data\_path data/test.csv
+python src/preproc/data_validation.py --data_path data/test.csv
 # Run batch predictions
-python src/preproc/predict.py --test\_path data/test.csv
+python src/preproc/predict.py --test_path data/test.csv
 # Start API for real-time predictions
 uvicorn src/api/app:app --reload --host 0.0.0.0 --port 8000
 ```
