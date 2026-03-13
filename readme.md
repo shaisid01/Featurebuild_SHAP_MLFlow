@@ -53,6 +53,8 @@ project\_root/
 
 ```
 ## 🧠 System Architecture
+
+![Architecture](docs/system architecture.png)
 ```
 
 Raw Data
