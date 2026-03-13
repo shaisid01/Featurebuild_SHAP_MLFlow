@@ -1,4 +1,4 @@
-\# 🚀 Project Overview
+# 🚀 Project Overview
 
 This repository implements a production-ready MLOps pipeline for predicting financial transactions using Santander dataset.
 
