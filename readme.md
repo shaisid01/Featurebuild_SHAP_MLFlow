@@ -1,33 +1,17 @@
 # 🚀 Project Overview
 
 This repository implements a production-ready MLOps pipeline for predicting financial transactions using Santander dataset.
-
 It demonstrates full ML lifecycle practices, including:
-
-
-
-\* Reproducible data processing \& feature engineering
-
-\* SHAP-based interaction feature discovery
-
-\* Feature store for persistent feature artifacts
-
-\* Cross-validation training with LightGBM and CatBoost
-
-\* Experiment tracking and model registry with MLflow
-
-\* Batch and real-time prediction pipelines via FastAPI
-
-\* The system is designed to be reproducible, auditable, and deployable.
-
-
-
-\# 📂 Project Structure
-
-
+  * Reproducible data processing \& feature engineering
+  * SHAP-based interaction feature discovery
+  * Feature store for persistent feature artifacts
+  * Cross-validation training with LightGBM and CatBoost
+  * Experiment tracking and model registry with MLflow
+  * Batch and real-time prediction pipelines via FastAPI
+  * The system is designed to be reproducible, auditable, and deployable.
+# 📂 Project Structure
 
 ```
-
 project\_root/
 
 │
@@ -104,21 +88,19 @@ project\_root/
 
 ```
 
-\## 🧠 System Architecture
-
-
+## 🧠 System Architecture
 
 ```
 
 Raw Data
 
-&nbsp;  │
+│
 
-&nbsp;  ▼
+ ▼
 
 Data Validation ──> Feature Engineering
 
-&nbsp;                     │
+                     │
 
 &nbsp;                     ▼
 
@@ -154,28 +136,22 @@ Data Validation ──> Feature Engineering
 
 ```
 
-\* Features → interactions → CV → final models → predictions
+* Features → interactions → CV → final models → predictions
+* All artifacts and metrics logged to MLflow
 
-\* All artifacts and metrics logged to MLflow
-
-
-
-\## ⚙️ Installation
-
-1\. Clone the repository:
+## ⚙️ Installation
+1. Clone the repository:
 
 ```
-
 git clone <repo\_url>
 
 cd project\_root
 
 ```
 
-2\. Create and activate a Python environment:
+2. Create and activate a Python environment:
 
 ```
-
 python -m venv venv
 
 source venv/bin/activate        # Linux/Mac
@@ -183,52 +159,31 @@ source venv/bin/activate        # Linux/Mac
 venv\\Scripts\\activate           # Windows
 
 ```
-
-3\. Install dependencies:
+3. Install dependencies:
 
 ```
-
 pip install -r requirements.txt
 
 ```
-
-4\. Ensure data files are available:
-
-
+4. Ensure data files are available:
 
 https://www.kaggle.com/c/santander-customer-transaction-prediction
-
 ```
-
 data/train.csv
-
 data/test.csv
-
 ```
 
-\## 📝 Configuration
+## 📝 Configuration
+* All global paths, seeds, and experiment settings are centralized in src/utils/config.py
+* Ensures reproducibility, consistent artifact paths, and separation of training vs API experiments
 
-\* All global paths, seeds, and experiment settings are centralized in src/utils/config.py
+## 🛠 Feature Engineering
 
-\* Ensures reproducibility, consistent artifact paths, and separation of training vs API experiments
-
-
-
-\## 🛠 Feature Engineering
-
-
-
-\*\*FeatureBuilder\*\*
-
-\* Computes row statistics: mean, std, min, max, sum
-
-\* Applies frequency encoding for categorical-like numeric features
-
-\* Handles interaction features
-
-\* Save/load for reproducible transformations
-
-
+**FeatureBuilder**
+* Computes row statistics: mean, std, min, max, sum
+* Applies frequency encoding for categorical-like numeric features
+* Handles interaction features
+* Save/load for reproducible transformations
 
 \*\*InteractionBuilder\*\*
 
