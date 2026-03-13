@@ -107,17 +107,13 @@ Data Validation ──> Feature Engineering
 
 ```
 git clone <repo\_url>
-
 cd project\_root
-
 ```
 2. Create and activate a Python environment:
 
 ```
 python -m venv venv
-
 source venv/bin/activate        # Linux/Mac
-
 venv\\Scripts\\activate           # Windows
 
 ```
