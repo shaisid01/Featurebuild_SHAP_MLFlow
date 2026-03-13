@@ -170,6 +170,7 @@ python src/preproc/data\_validation.py --data\_path data/train.csv
 mlflow.lightgbm.log_model(final_lgb, artifact_path="lgb_final_model", registered_model_name="LGBM_Santander")
 mlflow.catboost.log_model(final_cat, artifact_path="cat_final_model", registered_model_name="CatBoost_Santander")
 ```
+
 ## 📦 Batch Inference
 * Loads FeatureBuilder, FeatureStore, and InteractionBuilder
 * Aligns test features with training columns
