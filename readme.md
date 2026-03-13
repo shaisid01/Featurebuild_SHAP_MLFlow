@@ -53,53 +53,7 @@ project\_root/
 
 ```
 ## 🧠 System Architecture
-
-![Architecture](docs/system architecture.png)
-```
-
-Raw Data
-
-│
-
- ▼
-
-Data Validation ──> Feature Engineering
-
-                     │
-
-&nbsp;                     ▼
-
-&nbsp;                Feature Store
-
-&nbsp;                     │
-
-&nbsp;                     ▼
-
-&nbsp;           Cross-Validation Training
-
-&nbsp;            (LightGBM + CatBoost)
-
-&nbsp;                     │
-
-&nbsp;                     ▼
-
-&nbsp;              MLflow Experiment Tracking
-
-&nbsp;                     │
-
-&nbsp;                     ▼
-
-&nbsp;                 Model Registry
-
-&nbsp;                     │
-
-&nbsp;           ┌─────────┴─────────┐
-
-&nbsp;           ▼                   ▼
-
-&nbsp;    Batch Inference       Real-Time API
-
-```
+[System Architecture_.pdf](https://github.com/user-attachments/files/25975824/System.Architecture_.pdf)
 
 * Features → interactions → CV → final models → predictions
 * All artifacts and metrics logged to MLflow
