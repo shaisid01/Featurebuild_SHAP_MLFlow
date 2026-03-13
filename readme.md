@@ -167,8 +167,8 @@ python src/preproc/data\_validation.py --data\_path data/train.csv
 * Trains final models on full data
 * Registers models in MLflow:
 ```
-mlflow.lightgbm.log\_model(final\_lgb, artifact\_path="lgb\_final\_model", registered\_model\_name="LGBM\_Santander")
-mlflow.catboost.log\_model(final\_cat, artifact\_path="cat\_final\_model", registered\_model\_name="CatBoost\_Santander")
+mlflow.lightgbm.log_model(final_lgb, artifact_path="lgb_final_model", registered_model_name="LGBM_Santander")
+mlflow.catboost.log_model(final_cat, artifact_path="cat_final_model", registered_model_name="CatBoost_Santander")
 ```
 ## 📦 Batch Inference
 * Loads FeatureBuilder, FeatureStore, and InteractionBuilder
