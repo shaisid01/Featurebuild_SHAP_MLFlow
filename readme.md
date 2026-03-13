@@ -176,7 +176,7 @@ mlflow.catboost.log_model(final_cat, artifact_path="cat_final_model", registered
 * Performs predictions using LightGBM + CatBoost ensemble
 * Saves predictions to CSV and logs metrics to MLflow
 ```
-python src/preproc/predict.py --test\_path data/test.csv
+python src/preproc/predict.py --test_path data/test.csv
 ```
 ##⚡ Real-Time API
 FastAPI REST API serving ensemble predictions
@@ -185,7 +185,7 @@ Start API
 uvicorn src/api/app:app --reload --host 0.0.0.0 --port 8000
 ```
 Endpoints
-GET  /– Health check
+GET  – Health check
 POST /predict – Predict ensemble probability
 Request Example:
 ```
