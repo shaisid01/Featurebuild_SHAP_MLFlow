@@ -180,7 +180,7 @@ mlflow.catboost.log_model(final_cat, artifact_path="cat_final_model", registered
 python src/preproc/predict.py --test_path data/test.csv
 ```
 
-##⚡ Real-Time API
+## ⚡ Real-Time API
 
 FastAPI REST API serving ensemble predictions
 Start API
@@ -217,7 +217,7 @@ Logs inputs and predictions to MLflow for monitoring and audit.
 ##⚡ Quick Start
 ```
 # Train models
-python src/train.py --config configs/config.yaml
+python src/preproc/train.py --config configs/config.yaml
 # Validate data
 python src/preproc/data_validation.py --data_path data/test.csv
 # Run batch predictions
