@@ -15,81 +15,44 @@ It demonstrates full ML lifecycle practices, including:
 project\_root/
 
 │
-
 ├── src/
-
 │   ├── train.py                # Training pipeline with CV + final model
-
 │   ├── preproc/
-
 │   │   ├── predict.py          # Batch inference pipeline
-
 │   │   └── data\_validation.py # Data validation scripts
-
 │   ├── features/
-
 │   │   ├── feature\_builder.py  # Feature engineering class
-
 │   │   ├── feature\_store.py    # Feature persistence
-
 │   │   └── interactions.py     # SHAP interaction features
-
 │   ├── api/
-
 │   │   └── app.py              # FastAPI real-time API
-
 │   └── utils/
-
 │       ├── config.py           # Global configuration
-
 │       └── seed.py             # Seed utility
-
 │
-
 ├── data/
-
 │   ├── train.csv
-
 │   └── test.csv
-
 │
-
 ├── artifacts/                  # Generated feature artifacts
-
 │   └── feature\_builder.pkl
-
 │
-
 ├── models/                     # Trained model artifacts
-
 │   ├── lgb\_final.pkl
-
 │   └── cat\_final.pkl
-
 │
-
 ├── feature\_store/              # Persistent transformed features
-
 │   ├── features.parquet
-
 │   ├── freq\_maps.pkl
-
 │   └── interactions.pkl
-
 │
-
 ├── configs/
-
 │   └── config.yaml             # YAML configuration for pipelines
-
 │
-
 └── README.md
 
 ```
-
 ## 🧠 System Architecture
-
 ```
 
 Raw Data
@@ -148,7 +111,6 @@ git clone <repo\_url>
 cd project\_root
 
 ```
-
 2. Create and activate a Python environment:
 
 ```
@@ -160,10 +122,8 @@ venv\\Scripts\\activate           # Windows
 
 ```
 3. Install dependencies:
-
 ```
 pip install -r requirements.txt
-
 ```
 4. Ensure data files are available:
 
@@ -185,193 +145,85 @@ data/test.csv
 * Handles interaction features
 * Save/load for reproducible transformations
 
-\*\*InteractionBuilder\*\*
+**InteractionBuilder**
+* Uses SHAP values to select top features and interaction pairs
+* Generates multiplicative and ratio-based interaction features
+* Reduces feature space via SHAP pruning
 
-\* Uses SHAP values to select top features and interaction pairs
+**FeatureStore**
+* Saves processed features, frequency maps, and feature lists to disk
+* Enables consistent feature recovery for training and inference
 
-\* Generates multiplicative and ratio-based interaction features
-
-\* Reduces feature space via SHAP pruning
-
-
-
-\*\*FeatureStore\*\*
-
-\* Saves processed features, frequency maps, and feature lists to disk
-
-\* Enables consistent feature recovery for training and inference
-
-
-
-\## ✅ Data Validation
-
-\* Validates schema and missing columns
-
-\* Computes statistics and detects outliers
-
-\* Logs results to MLflow
-
-
-
+## ✅ Data Validation
+* Validates schema and missing columns
+* Computes statistics and detects outliers
+* Logs results to MLflow
 ```
-
 python src/preproc/data\_validation.py --data\_path data/train.csv
-
 ```
-
-\## 🎯 Model Training
-
-\* Loads config.yaml and sets seed (utils.seed.set\_seed)
-
-\* Generates features and interactions
-
-\* Saves features to FeatureStore
-
-\* Performs cross-validation (LightGBM + CatBoost)
-
-\* Logs fold metrics to MLflow
-
-\* Saves CV models locally and to MLflow
-
-\* Trains final models on full data
-
-\* Registers models in MLflow:
-
-
-
+## 🎯 Model Training
+* Loads config.yaml and sets seed (utils.seed.set\_seed)
+* Generates features and interactions
+* Saves features to FeatureStore
+* Performs cross-validation (LightGBM + CatBoost)
+* Logs fold metrics to MLflow
+* Saves CV models locally and to MLflow
+* Trains final models on full data
+* Registers models in MLflow:
 ```
-
 mlflow.lightgbm.log\_model(final\_lgb, artifact\_path="lgb\_final\_model", registered\_model\_name="LGBM\_Santander")
-
 mlflow.catboost.log\_model(final\_cat, artifact\_path="cat\_final\_model", registered\_model\_name="CatBoost\_Santander")
-
 ```
-
-\## 📦 Batch Inference
-
-
-
-\* Loads FeatureBuilder, FeatureStore, and InteractionBuilder
-
-\* Aligns test features with training columns
-
-\* Performs predictions using LightGBM + CatBoost ensemble
-
-\* Saves predictions to CSV and logs metrics to MLflow
-
+## 📦 Batch Inference
+* Loads FeatureBuilder, FeatureStore, and InteractionBuilder
+* Aligns test features with training columns
+* Performs predictions using LightGBM + CatBoost ensemble
+* Saves predictions to CSV and logs metrics to MLflow
 ```
-
 python src/preproc/predict.py --test\_path data/test.csv
-
 ```
-
-\##⚡ Real-Time API
-
-
-
+##⚡ Real-Time API
 FastAPI REST API serving ensemble predictions
-
-
-
 Start API
-
 ```
-
 uvicorn src/api/app:app --reload --host 0.0.0.0 --port 8000
-
 ```
-
 Endpoints
-
-
-
 GET / – Health check
-
-
-
 POST /predict – Predict ensemble probability
-
-
-
 Request Example:
-
 ```
-
 {
-
-&nbsp; "features": {
-
-&nbsp;   "var\_0": 0.12,
-
-&nbsp;   "var\_1": -1.34,
-
-&nbsp;   ...
-
-&nbsp; }
-
+"features": {
+  "var\_0": 0.12,
+   "var\_1": -1.34,
+    ...
+ }
 }
-
 ```
-
 Response Example:
-
 ```
-
 {
 
-&nbsp; "prediction": 0.8234,
-
-&nbsp; "timestamp": "2026-03-12T14:35:12.123456",
-
-&nbsp; "model\_version": "final"
-
+"prediction": 0.8234,
+"timestamp": "2026-03-12T14:35:12.123456",
+"model\_version": "final"
 }
-
 ```
-
-\* Logs inputs and predictions to MLflow for monitoring and audit.
-
-
-
-\## 🔄 Reproducibility
-
-
-
-\* utils.seed.set\_seed(seed) ensures deterministic results
-
-\* FeatureBuilder + FeatureStore guarantees consistent features
-
-\* MLflow logs provide full traceability of experiments and predictions
-
-
-
-\##⚡ Quick Start
-
-
-
+Logs inputs and predictions to MLflow for monitoring and audit.
+## 🔄 Reproducibility
+* utils.seed.set\_seed(seed) ensures deterministic results
+* FeatureBuilder + FeatureStore guarantees consistent features
+* MLflow logs provide full traceability of experiments and predictions
+##⚡ Quick Start
 ```
-
-\# Train models
-
+# Train models
 python src/train.py --config configs/config.yaml
-
-
-
-\# Validate data
-
+# Validate data
 python src/preproc/data\_validation.py --data\_path data/test.csv
-
-
-
-\# Run batch predictions
-
+# Run batch predictions
 python src/preproc/predict.py --test\_path data/test.csv
-
-
-
-\# Start API for real-time predictions
-
+# Start API for real-time predictions
 uvicorn src/api/app:app --reload --host 0.0.0.0 --port 8000
-
 ```
 
