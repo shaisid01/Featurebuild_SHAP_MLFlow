@@ -184,8 +184,11 @@ uvicorn src/api/app:app --reload --host 0.0.0.0 --port 8000
 ```
 ## 📈 MLFlow UI
 
-![MLflow Logo](https://mlflow.org/docs/latest/_images/MLflowUI1.png)
+![MLflow Logo](https://mlflow.org/docs/MLflowUI1.png)
 
+<p align="center">
+  <img src="https://mlflow.org/docs/MLflowUI1.png" width="200">
+</p>
 
 
 
