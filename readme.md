@@ -182,9 +182,9 @@ python src/preproc/predict.py --test_path data/test.csv
 # Start API for real-time predictions
 uvicorn src/api/app:app --reload --host 0.0.0.0 --port 8000
 ```
-## 📊 MLFlow UI
+## 📈 MLFlow UI
 
-
+![MLflow Logo](https://mlflow.org/docs/latest/_images/MLflowUI1.png)
 
 
 
