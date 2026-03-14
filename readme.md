@@ -184,13 +184,9 @@ uvicorn src/api/app:app --reload --host 0.0.0.0 --port 8000
 ```
 ## 📈 MLFlow UI
 
-![MLflow Logo](https://mlflow.org/docs/MLflowUI1.png)
-
-<p align="center">
-  <img src="https://mlflow.org/docs/MLflowUI1.png" width="200">
+<p align="left">
+  <img src="https://github.com/shaisid01/Featurebuild_SHAP_MLFlow/blob/main/docs/MLFlow_UI.png" width="700">
 </p>
-
-![MLflow Logo](../docs/MLflowUI1.png)
 
 ## 📊 Dataset
 Santander Customer Transaction Prediction
