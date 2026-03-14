@@ -12,41 +12,41 @@ It demonstrates full ML lifecycle practices, including:
 ## 📂 Project Structure
 
 ```
-project\_root/
+project_root
 
 │
-├── src/
+├── src
 │   ├── train.py                # Training pipeline with CV + final model
-│   ├── preproc/
+│   ├── preproc
 │   │   ├── predict.py          # Batch inference pipeline
-│   │   └── data\_validation.py # Data validation scripts
-│   ├── features/
-│   │   ├── feature\_builder.py  # Feature engineering class
-│   │   ├── feature\_store.py    # Feature persistence
+│   │   └── data_validation.py # Data validation scripts
+│   ├── features
+│   │   ├── feature_builder.py  # Feature engineering class
+│   │   ├── feature_store.py    # Feature persistence
 │   │   └── interactions.py     # SHAP interaction features
-│   ├── api/
+│   ├── api
 │   │   └── app.py              # FastAPI real-time API
-│   └── utils/
+│   └── utils
 │       ├── config.py           # Global configuration
 │       └── seed.py             # Seed utility
 │
-├── data/
+├── data
 │   ├── train.csv
 │   └── test.csv
 │
-├── artifacts/                  # Generated feature artifacts
-│   └── feature\_builder.pkl
+├── artifacts                  # Generated feature artifacts
+│   └── feature_builder.pkl
 │
-├── models/                     # Trained model artifacts
-│   ├── lgb\_final.pkl
-│   └── cat\_final.pkl
+├── models                     # Trained model artifacts
+│   ├── lgb_final.pkl
+│   └── cat_final.pkl
 │
-├── feature\_store/              # Persistent transformed features
+├── feature_store              # Persistent transformed features
 │   ├── features.parquet
-│   ├── freq\_maps.pkl
+│   ├── freq_maps.pkl
 │   └── interactions.pkl
 │
-├── configs/
+├── configs
 │   └── config.yaml             # YAML configuration for pipelines
 │
 └── README.md
