@@ -171,7 +171,8 @@ Logs inputs and predictions to MLflow for monitoring and audit.
 * utils.seed.set_seed(seed) ensures deterministic results
 * FeatureBuilder + FeatureStore guarantees consistent features
 * MLflow logs provide full traceability of experiments and predictions
-##⚡ Quick Start
+  
+## ⚡ Quick Start
 ```
 # Train models
 python src/preproc/train.py --config configs/config.yaml
